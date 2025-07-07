@@ -56,5 +56,5 @@ alias act='source .venv/bin/activate'
 alias cddata='cd $DFT_DATA'
 alias cdmodel='cd $DFT_MODELS'
 
-# rsync recursive, verbose, human-readable, compressed, delete files that no longer exist, progress bar
-alias rsync='rsync -rvhz --delete --info=progress2 --info=name0'
+# rsync recursive, verbose, human-readable, compressed, progress bar
+alias rsync='rsync -rvhz --info=progress2 --info=name0'
