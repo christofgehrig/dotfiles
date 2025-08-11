@@ -7,6 +7,8 @@ esac
 # Set default shell to Zsh if available
 if [ -x /bin/zsh ]; then
     export SHELL=/bin/zsh
+elif [ -x ~/.local/bin/zsh ]; then
+    export SHELL=~/.local/bin/zsh
 elif [ -x ~/bin/zsh ]; then
     export SHELL=~/bin/zsh
 fi
