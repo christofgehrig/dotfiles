@@ -14,10 +14,5 @@ submodules:
     git remote add origin https://github.com/christofgehrig/dotfiles.git  # Add remote
     git fetch origin && git checkout -t origin/main                       # Fetch and checkout main branch
     git submodule update --init                                           # Initialize and update submodules
-```
-
-Install .fzf:
-
-```bash
-    ~/.fzf/install
+    ~/.fzf/install --key-bindings --completion --no-update-rc --no-bash   # Install fuzzy finder (optional)
 ```
