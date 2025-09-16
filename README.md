@@ -16,3 +16,9 @@ submodules:
     git submodule update --init                                           # Initialize and update submodules
     ~/.fzf/install --key-bindings --completion --no-update-rc --no-bash   # Install fuzzy finder (optional)
 ```
+
+## Local configs
+
+Configurations that are specific to a machine such as environment variables
+can be placed in the `~/.zshrc_local` file. This file is sourced at the end of
+the `~/.zshrc` file if it exists.
