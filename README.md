@@ -1,13 +1,23 @@
-# Dotfiles
+# Dotfiles configurations
+
+This repository contains dotfiles to use zsh as shell, tmux as terminal
+multiplexer, and fzf as command-line fuzzy finder among several
+smaller configurations.
+
+## "Installation"
 
 Check out the dotfiles repository in existing home directory and update the
 submodules:
 
-    cd && git init -b main
-    git remote add origin git@github.com:christofgehrig/dotfiles.git
-    git fetch origin && git checkout -t origin/main
-    git submodule update --init
+```bash
+    cd && git init -b main                                                # Initialize git repository
+    git remote add origin https://github.com/christofgehrig/dotfiles.git  # Add remote
+    git fetch origin && git checkout -t origin/main                       # Fetch and checkout main branch
+    git submodule update --init                                           # Initialize and update submodules
+```
 
 Install .fzf:
 
+```bash
     ~/.fzf/install
+```
