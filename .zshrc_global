@@ -60,3 +60,10 @@ alias cdmodel='cd $DFT_MODELS'
 
 # rsync recursive, verbose, human-readable, compressed, progress bar
 alias rsync='rsync -rvhz --info=progress2 --info=name0'
+
+# count files in a directory (uses current dir by default)
+count() {
+  local dir="${1:-.}"
+  find "$dir" -maxdepth 1 -type f | wc -l
+}
+
