@@ -269,7 +269,7 @@ tmux_conf_theme_right_separator_sub="|"
 #     - #{username_ssh}
 tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
 #tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} | #{pretty_pane_current_path} "
-tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #{hostname} "
+tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} | #H "
 
 # status left style
 tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
@@ -398,6 +398,13 @@ set -g mouse on
 
 # move status line to top
 #set -g status-position top
+
+# Use C-b on remote SSH hosts, C-a locally.
+# TMUX_SSH_REMOTE is sent by ~/.ssh/config (Host * SetEnv ...).
+# SSH_CONNECTION is a fallback when the server does not accept forwarded env vars.
+if-shell '[ "${TMUX_SSH_REMOTE:-}" = "1" ] || [ -n "${SSH_CONNECTION:-}" ]' \
+  'set -g prefix C-b; set -g prefix2 C-a; unbind-key C-a; unbind-key C-b; bind-key C-b send-prefix; bind-key C-a send-prefix -2' \
+  'set -g prefix C-a; set -gu prefix2; unbind-key C-a; unbind-key C-b; bind-key C-a send-prefix'
 
 
 # -- tpm -----------------------------------------------------------------------
