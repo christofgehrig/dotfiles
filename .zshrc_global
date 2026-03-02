@@ -54,6 +54,9 @@ source $ZSH/oh-my-zsh.sh
 source ~/.powerlevel10k/powerlevel10k.zsh-theme
 source ~/.p10k.zsh
 
+# Leave Ctrl+L unbound instead of clearing the screen.
+bindkey -r '^L'
+
 case ":${PATH}:" in
     *:"$HOME/.local/bin":*)
         ;;
@@ -84,4 +87,3 @@ count() {
   local dir="${1:-.}"
   find "$dir" -maxdepth 1 -type f | wc -l
 }
-
