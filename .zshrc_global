@@ -29,6 +29,24 @@ plugins=(
   command-not-found
 )
 
+# Cluster module init scripts may export FPATH (and thus set $fpath) to a minimal
+# directory like /usr/share/Modules/init/zsh-functions, which hides standard Zsh
+# autoloaded functions (compinit, add-zsh-hook, colors, is-at-least, ...).
+# Oh My Zsh depends on those functions, so ensure the standard function
+# directories are present for interactive shells.
+if [[ -o interactive ]]; then
+  typeset -U fpath
+  for _zfuncdir in \
+    "$HOME/.local/share/zsh/site-functions" \
+    "$HOME/.local/share/zsh/${ZSH_VERSION}/functions" \
+    /usr/share/zsh/site-functions \
+    "/usr/share/zsh/${ZSH_VERSION}/functions"
+  do
+    [[ -d "${_zfuncdir}" ]] && fpath=("${_zfuncdir}" $fpath)
+  done
+  unset _zfuncdir
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 # Powerlevel10k configuration
