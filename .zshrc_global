@@ -56,6 +56,8 @@ source ~/.p10k.zsh
 
 # Leave Ctrl+L unbound instead of clearing the screen.
 bindkey -r '^L'
+# Leave Ctrl+J unbound instead of accepting the line.
+bindkey -r '^J'
 
 case ":${PATH}:" in
     *:"$HOME/.local/bin":*)
