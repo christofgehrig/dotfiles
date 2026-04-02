@@ -80,6 +80,7 @@ export EDITOR="$VISUAL"
 alias act='source .venv/bin/activate'
 alias cddata='cd $DFT_DATA'
 alias cdmodel='cd $DFT_MODELS'
+alias ta='tmux attach'
 
 # rsync recursive, verbose, human-readable, compressed, progress bar
 alias rsync='rsync -rvhz --info=progress2 --info=name0'
