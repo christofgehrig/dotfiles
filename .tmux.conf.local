@@ -418,6 +418,9 @@ if-shell '[ "${TMUX_SSH_REMOTE:-}" = "1" ] || [ -n "${SSH_CONNECTION:-}" ]' \
 bind-key -n C-h previous-window #!important
 bind-key -n C-l next-window #!important
 
+# Insert the current window before the selected window.
+bind-key . choose-window -F '#I: #W' "move-window -b -t '%%'" #!important
+
 
 # -- tpm -----------------------------------------------------------------------
 
