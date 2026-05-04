@@ -403,12 +403,12 @@ set -g mouse on
 # TMUX_SSH_REMOTE is sent by ~/.ssh/config (Host * SetEnv ...).
 # SSH_CONNECTION is a fallback when the server does not accept forwarded env vars.
 # Reset these keys before applying the local or remote variant.
-unbind-key -q C-a
-unbind-key -q C-b
-unbind-key -q C-j
-unbind-key -q C-k
-unbind-key -n -q C-j
-unbind-key -n -q C-k
+unbind-key C-a
+unbind-key C-b
+unbind-key C-j
+unbind-key C-k
+unbind-key -n C-j
+unbind-key -n C-k
 
 if-shell '[ "${TMUX_SSH_REMOTE:-}" = "1" ] || [ -n "${SSH_CONNECTION:-}" ]' \
   'set -g prefix C-b; set -g prefix2 C-a; bind-key C-b send-prefix; bind-key C-a send-prefix -2; bind-key -n C-j previous-window; bind-key -n C-k next-window' \
